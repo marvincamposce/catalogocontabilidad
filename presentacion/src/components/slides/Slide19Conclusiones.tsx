@@ -14,7 +14,7 @@ export default function Slide25Conclusiones() {
       <div className="paint-bar warm" />
       <span className="section-number">10</span>
 
-      <div className="slide-label" style={{ "--color-blue": "var(--color-rose)" } as React.CSSProperties}>Sección 10</div>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-sky)" } as React.CSSProperties}>Sección 10</div>
       <h2 className="slide-title"><span className="accent">Conclusiones</span></h2>
 
       <div style={{ flex: 1, display: "flex", alignItems: "center" }}>

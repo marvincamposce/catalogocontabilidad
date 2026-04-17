@@ -19,7 +19,7 @@ export default function Slide24BalanceGeneral() {
       <div className="paint-bar warm" />
       <span className="section-number">09</span>
 
-      <div className="slide-label" style={{ "--color-blue": "var(--color-rose)" } as React.CSSProperties}>Sección 9 · Caso Ilustrativo</div>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-sky)" } as React.CSSProperties}>Sección 9 · Caso Ilustrativo</div>
       <h2 className="slide-title medium">Balance <span className="accent">General</span></h2>
       <p style={{ fontSize: 12.5, color: "var(--text-tertiary)", marginBottom: 12 }}>Al cierre del período — cifras en Lempiras</p>
 

@@ -22,7 +22,7 @@ export default function Slide23EstadoResultados() {
       <div className="paint-bar warm" />
       <span className="section-number">09</span>
 
-      <div className="slide-label" style={{ "--color-blue": "var(--color-rose)" } as React.CSSProperties}>Sección 9 · Caso Ilustrativo</div>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-sky)" } as React.CSSProperties}>Sección 9 · Caso Ilustrativo</div>
       <h2 className="slide-title medium">Estado de <span className="accent">Resultados</span></h2>
 
       <div className="grid-3-2" style={{ flex: 1 }}>
@@ -38,7 +38,7 @@ export default function Slide23EstadoResultados() {
                     paddingLeft: r.sub ? 28 : undefined, fontSize: 11.5,
                   }}>{r.concepto}</td>
                   <td className="amount-cell" style={{
-                    color: r.total ? "var(--color-emerald)" : r.sub ? "var(--color-rose)" : "var(--text-secondary)",
+                    color: r.total ? "var(--color-emerald)" : r.sub ? "var(--color-sky)" : "var(--text-secondary)",
                     fontWeight: r.total ? 700 : 400, fontSize: 11.5,
                   }}>{r.monto}</td>
                 </tr>

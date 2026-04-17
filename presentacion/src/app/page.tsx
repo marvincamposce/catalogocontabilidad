@@ -98,7 +98,7 @@ export default function PresentationPage() {
   return (
     <div className="presentation-root" id="presentation">
       <SlideContainer slideId={nav.currentSlide} key={`slide-${nav.currentSlide}-${animKey}`}>
-        <div className="slide-content-wrapper slide-enter">
+        <div className="slide-content-wrapper slide-enter" style={{ height: "100%" }}>
           {CurrentSlideComponent && <CurrentSlideComponent />}
         </div>
       </SlideContainer>

@@ -59,7 +59,8 @@ export default function SlideNavigation({
 
         <span className="nav-title">{SLIDES[currentSlide - 1]?.title || ""}</span>
 
-        <div className="nav-controls">
+        {/* PDF export — hidden for now, functionality preserved */}
+        <div className="nav-controls" style={{ display: "none" }}>
           {exporting && (
             <span style={{ fontSize: 11, color: "var(--text-tertiary)" }}>{exportProgress}</span>
           )}

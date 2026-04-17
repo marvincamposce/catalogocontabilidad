@@ -18,7 +18,7 @@ export default function Slide22CasoCostoProduccion() {
       <div className="paint-bar warm" />
       <span className="section-number">09</span>
 
-      <div className="slide-label" style={{ "--color-blue": "var(--color-rose)" } as React.CSSProperties}>Sección 9 · Caso Ilustrativo</div>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-sky)" } as React.CSSProperties}>Sección 9 · Caso Ilustrativo</div>
       <h2 className="slide-title medium">Costo de <span className="accent">Producción</span></h2>
       <p style={{ fontSize: 12.5, color: "var(--text-tertiary)", marginBottom: 16 }}>Pinturas Industriales del Valle, S.A. — Cifras en Lempiras (L.)</p>
 
@@ -35,7 +35,7 @@ export default function Slide22CasoCostoProduccion() {
                     paddingLeft: r.indent ? 32 : undefined, fontSize: 13,
                   }}>{r.concepto}</td>
                   <td className="amount-cell" style={{
-                    color: (r as { total?: boolean }).total ? "var(--color-blue)" : r.sub ? "var(--color-rose)" : "var(--text-secondary)",
+                    color: (r as { total?: boolean }).total ? "var(--color-blue)" : r.sub ? "var(--color-sky)" : "var(--text-secondary)",
                     fontWeight: (r as { total?: boolean }).total ? 700 : 400, fontSize: 13,
                   }}>{r.monto}</td>
                 </tr>

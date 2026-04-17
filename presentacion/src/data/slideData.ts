@@ -17,7 +17,7 @@ export const PRESENTER_COLORS = [
   "#7C3AED", // Violet
   "#059669", // Emerald
   "#D97706", // Amber
-  "#E11D48", // Rose
+  "#0891B2", // Teal
 ];
 
 export const PRESENTER_SOFT_COLORS = [
@@ -25,7 +25,7 @@ export const PRESENTER_SOFT_COLORS = [
   "#F3EEFF",
   "#ECFDF5",
   "#FFFBEB",
-  "#FFF1F2",
+  "#ECFEFF",
 ];
 
 export const SLIDES: SlideInfo[] = [
