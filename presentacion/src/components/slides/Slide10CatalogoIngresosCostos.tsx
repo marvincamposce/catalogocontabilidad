@@ -1,88 +1,55 @@
 import React from "react";
 
-const INGRESOS = [
-  { code: "4101", name: "Ventas" },
-  { code: "4102", name: "Devoluciones sobre ventas" },
-  { code: "4103", name: "Otros ingresos" },
+const FORMULAS = [
+  {
+    name: "Costo de Producción",
+    body: "MP Utilizada + MOD + CIF",
+    color: "#2E5BFF",
+  },
+  {
+    name: "Costo de Productos Terminados",
+    body: "Inv. Ini. Prod. en Proceso + Costo de Producción − Inv. Final Prod. en Proceso",
+    color: "#7C3AED",
+  },
+  {
+    name: "Costo de Productos Vendidos",
+    body: "Inv. Ini. Prod. Terminados + Costo Prod. Terminados − Inv. Final Prod. Terminados",
+    color: "#059669",
+  },
 ];
 
-const COSTOS = [
-  { code: "5101", name: "Compras de materia prima" },
-  { code: "5102", name: "Fletes en compras" },
-  { code: "5103", name: "Devoluciones sobre compras" },
-  { code: "5104", name: "Mano de obra directa" },
-  { code: "5105", name: "Nómina de fábrica" },
-  { code: "5106", name: "CIF control" },
-  { code: "5107", name: "CIF aplicados" },
-  { code: "5108", name: "Variación de CIF" },
-];
-
-export default function Slide10CatalogoIngresosCostos() {
+export default function Slide10Formulas() {
   return (
     <div className="slide-content">
-      <span className="section-number">05</span>
-      <div className="slide-label">Sección 5 — Catálogo de Cuentas</div>
-      <h2 className="slide-title small">Catálogo: Ingresos y Costos de Producción</h2>
+      <div className="paint-bar" style={{ background: "var(--gradient-cool)" }} />
+      <span className="section-number">ƒ</span>
 
-      <div className="grid-2" style={{ flex: 1, overflow: "hidden" }}>
-        {/* Ingresos */}
-        <div>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700, color: "var(--color-presenter-5)", marginBottom: "var(--space-3)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-presenter-5)" }} />
-            Grupo 4 — Ingresos
-          </div>
-          <div className="table-scroll">
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Cuenta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {INGRESOS.map((c) => (
-                  <tr key={c.code}>
-                    <td className="code-cell">{c.code}</td>
-                    <td>{c.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-violet)" } as React.CSSProperties}>Sección 4</div>
+      <h2 className="slide-title medium">Fórmulas de <span className="accent">Producción</span></h2>
 
-          <div className="glass-card compact" style={{ marginTop: "var(--space-4)" }}>
-            <p style={{ fontSize: 12, lineHeight: 1.6, color: "var(--text-secondary)" }}>
-              Los ingresos son de <strong style={{ color: "var(--text-primary)" }}>naturaleza acreedora</strong>. Las
-              devoluciones sobre ventas (4102) tienen naturaleza deudora y disminuyen las ventas netas.
-            </p>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 24 }}>
+        {FORMULAS.map((f) => (
+          <div key={f.name} className="formula-card" style={{ padding: "22px 28px" }}>
+            <div className="formula-accent" style={{ background: f.color }} />
+            <div className="formula-name">{f.name}</div>
+            <div className="formula-body">
+              {f.body.split(/(\+|−)/g).map((part, i) =>
+                part === "+" || part === "−" ? (
+                  <span key={i} className="formula-operator"> {part} </span>
+                ) : (
+                  <span key={i}>{part}</span>
+                )
+              )}
+            </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        {/* Costos */}
-        <div>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700, color: "var(--color-presenter-2)", marginBottom: "var(--space-3)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-presenter-2)" }} />
-            Grupo 5 — Costos de Producción
-          </div>
-          <div className="table-scroll">
-            <table className="data-table compact">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Cuenta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {COSTOS.map((c) => (
-                  <tr key={c.code}>
-                    <td className="code-cell">{c.code}</td>
-                    <td>{c.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div className="callout blue" style={{ marginTop: 12 }}>
+        <span style={{ fontSize: 13.5 }}>
+          Estas tres fórmulas constituyen el puente entre la <strong>contabilidad de costos</strong> y
+          los <strong>estados financieros</strong> de la empresa.
+        </span>
       </div>
     </div>
   );

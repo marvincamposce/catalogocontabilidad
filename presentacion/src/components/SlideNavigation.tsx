@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  Loader2,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, Loader2 } from "lucide-react";
 import { exportToPdf } from "@/utils/exportPdf";
 import { SLIDES } from "@/data/slideData";
 
@@ -22,14 +17,8 @@ interface SlideNavigationProps {
 }
 
 export default function SlideNavigation({
-  currentSlide,
-  totalSlides,
-  progress,
-  isFirst,
-  isLast,
-  onPrev,
-  onNext,
-  goToSlide,
+  currentSlide, totalSlides, progress, isFirst, isLast,
+  onPrev, onNext, goToSlide,
 }: SlideNavigationProps) {
   const [exporting, setExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState("");
@@ -39,7 +28,7 @@ export default function SlideNavigation({
     setExportProgress("Preparando...");
     try {
       await exportToPdf(totalSlides, goToSlide, (current, total) => {
-        setExportProgress(`Slide ${current}/${total}`);
+        setExportProgress(`${current}/${total}`);
       });
     } catch (err) {
       console.error("Export failed:", err);
@@ -51,55 +40,32 @@ export default function SlideNavigation({
 
   return (
     <>
-      {/* Progress bar */}
       <div className="progress-bar">
         <div className="progress-fill" style={{ width: `${progress}%` }} />
       </div>
 
-      {/* Navigation bar */}
       <nav className="nav-bar" id="slide-navigation">
         <div className="nav-controls">
-          <button
-            className="nav-btn"
-            onClick={onPrev}
-            disabled={isFirst}
-            aria-label="Slide anterior"
-            id="btn-prev"
-          >
-            <ChevronLeft size={20} />
+          <button className="nav-btn" onClick={onPrev} disabled={isFirst} aria-label="Anterior" id="btn-prev">
+            <ChevronLeft size={18} />
           </button>
           <span className="nav-counter">
             <span className="current">{currentSlide}</span> / {totalSlides}
           </span>
-          <button
-            className="nav-btn"
-            onClick={onNext}
-            disabled={isLast}
-            aria-label="Siguiente slide"
-            id="btn-next"
-          >
-            <ChevronRight size={20} />
+          <button className="nav-btn" onClick={onNext} disabled={isLast} aria-label="Siguiente" id="btn-next">
+            <ChevronRight size={18} />
           </button>
         </div>
 
-        <div style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
-          {SLIDES[currentSlide - 1]?.title || ""}
-        </div>
+        <span className="nav-title">{SLIDES[currentSlide - 1]?.title || ""}</span>
 
         <div className="nav-controls">
           {exporting && (
-            <span style={{ fontSize: 11, color: "var(--text-tertiary)" }}>
-              {exportProgress}
-            </span>
+            <span style={{ fontSize: 11, color: "var(--text-tertiary)" }}>{exportProgress}</span>
           )}
-          <button
-            className="nav-btn accent"
-            onClick={handleExport}
-            disabled={exporting}
-            id="btn-export-pdf"
-          >
-            {exporting ? <Loader2 size={16} className="spinning" /> : <Download size={16} />}
-            {exporting ? "Exportando..." : "PDF"}
+          <button className="nav-btn accent" onClick={handleExport} disabled={exporting} id="btn-export-pdf">
+            {exporting ? <Loader2 size={14} className="spinning" /> : <Download size={14} />}
+            {exporting ? "Exportando" : "PDF"}
           </button>
         </div>
       </nav>

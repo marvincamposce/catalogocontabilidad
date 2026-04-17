@@ -1,105 +1,64 @@
 import React from "react";
 
-const MANUAL_ACTIVO = [
-  {
-    code: "1101",
-    name: "Caja",
-    nat: "Deudora",
-    cargo: "Ingresos en efectivo, arqueos favorables",
-    abono: "Depósitos, pagos en efectivo, faltantes",
-    saldo: "Efectivo disponible en caja",
-  },
-  {
-    code: "1102",
-    name: "Bancos",
-    nat: "Deudora",
-    cargo: "Depósitos, transferencias recibidas, NC",
-    abono: "Cheques, transferencias enviadas, ND",
-    saldo: "Dinero en cuentas bancarias",
-  },
-  {
-    code: "1103",
-    name: "Ctas. por cobrar",
-    nat: "Deudora",
-    cargo: "Ventas a crédito, recargos",
-    abono: "Cobros, NC, devoluciones",
-    saldo: "Pendiente de cobro a clientes",
-  },
-  {
-    code: "1106",
-    name: "Inv. materia prima",
-    nat: "Deudora",
-    cargo: "Compras, fletes, entradas a bodega",
-    abono: "Salidas a producción, devoluciones",
-    saldo: "Materia prima existente",
-  },
-  {
-    code: "1108",
-    name: "Inv. prod. en proceso",
-    nat: "Deudora",
-    cargo: "MPD, MOD, CIF aplicados a órdenes",
-    abono: "Costo de órdenes terminadas",
-    saldo: "Órdenes aún no concluidas",
-  },
-  {
-    code: "1109",
-    name: "Inv. prod. terminados",
-    nat: "Deudora",
-    cargo: "Costo de órdenes terminadas",
-    abono: "Costo de productos vendidos",
-    saldo: "Existencias listas para venta",
-  },
-  {
-    code: "1203",
-    name: "Maquinaria y equipo",
-    nat: "Deudora",
-    cargo: "Compras, mejoras capitalizables",
-    abono: "Retiros, ventas, bajas",
-    saldo: "Costo histórico maquinaria",
-  },
+const NO_CORRIENTE = [
+  { code: "1201", name: "Terrenos" }, { code: "1202", name: "Edificios" },
+  { code: "1203", name: "Maquinaria y equipo" }, { code: "1204", name: "Equipo de oficina" },
+  { code: "1205", name: "Equipo de reparto" }, { code: "1206", name: "Dep. acumulada edificios" },
+  { code: "1207", name: "Dep. acumulada maquinaria y equipo" }, { code: "1208", name: "Dep. acumulada equipo de oficina" },
+  { code: "1209", name: "Dep. acumulada equipo de reparto" },
 ];
 
-export default function Slide12ManualActivo() {
+export default function Slide12ActivoNoCorriente() {
   return (
-    <div className="slide-content padded-top">
-      <span className="section-number">06</span>
-      <div className="slide-label">Sección 6 — Manual de Cuentas</div>
-      <h2 className="slide-title small">Manual de Cuentas: Activo</h2>
+    <div className="slide-content">
+      <div className="paint-bar fresh" />
+      <span className="section-number">05</span>
 
-      <div className="table-scroll" style={{ flex: 1 }}>
-        <table className="data-table compact">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Cuenta</th>
-              <th>Nat.</th>
-              <th>Se Carga</th>
-              <th>Se Acredita</th>
-              <th>Saldo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {MANUAL_ACTIVO.map((r) => (
-              <tr key={r.code}>
-                <td className="code-cell">{r.code}</td>
-                <td style={{ fontWeight: 500, color: "var(--text-primary)" }}>{r.name}</td>
-                <td>
-                  <span className="tag" style={{
-                    color: "#4f8cff",
-                    borderColor: "rgba(79,140,255,0.3)",
-                    background: "rgba(79,140,255,0.08)",
-                    fontSize: 10,
-                  }}>
-                    {r.nat}
-                  </span>
-                </td>
-                <td>{r.cargo}</td>
-                <td>{r.abono}</td>
-                <td style={{ color: "var(--text-tertiary)", fontStyle: "italic" }}>{r.saldo}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-emerald)" } as React.CSSProperties}>Sección 5 · Catálogo de Cuentas</div>
+      <h2 className="slide-title medium"><span className="accent">Activo</span> No Corriente</h2>
+
+      <div style={{ flex: 1, display: "flex", gap: 32, alignItems: "flex-start" }}>
+        <div style={{ flex: 1 }}>
+          <div className="table-wrap">
+            <table className="data-table">
+              <thead>
+                <tr><th style={{ width: 100 }}>Código</th><th>Cuenta</th><th style={{ width: 140 }}>Naturaleza</th></tr>
+              </thead>
+              <tbody>
+                {NO_CORRIENTE.map((c) => (
+                  <tr key={c.code}>
+                    <td className="code-cell">{c.code}</td>
+                    <td style={{ fontWeight: 500, color: "var(--text-primary)" }}>{c.name}</td>
+                    <td>
+                      <span className="tag" style={{
+                        color: c.name.startsWith("Dep.") ? "var(--color-rose)" : "var(--color-blue)",
+                        borderColor: c.name.startsWith("Dep.") ? "rgba(225,29,72,0.25)" : "rgba(46,91,255,0.25)",
+                        background: c.name.startsWith("Dep.") ? "var(--color-rose-soft)" : "var(--color-blue-soft)",
+                      }}>
+                        {c.name.startsWith("Dep.") ? "Acreedora" : "Deudora"}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style={{ flex: "0 0 280px", display: "flex", flexDirection: "column", gap: 12, paddingTop: 8 }}>
+          <div className="stat-card">
+            <span className="stat-label">Total Activo Corriente</span>
+            <span className="stat-value">10 cuentas</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-label">Total No Corriente</span>
+            <span className="stat-value" style={{ color: "var(--color-violet)" }}>9 cuentas</span>
+          </div>
+          <div className="callout blue" style={{ padding: "12px 16px", fontSize: 12 }}>
+            Las depreciaciones acumuladas son de <strong>naturaleza acreedora</strong> y disminuyen
+            el valor del activo fijo correspondiente.
+          </div>
+        </div>
       </div>
     </div>
   );

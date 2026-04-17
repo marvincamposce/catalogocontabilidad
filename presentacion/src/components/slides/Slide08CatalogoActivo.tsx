@@ -1,91 +1,60 @@
 import React from "react";
+import { CheckCircle } from "lucide-react";
 
-const ACTIVO_CORRIENTE = [
-  { code: "1101", name: "Caja" },
-  { code: "1102", name: "Bancos" },
-  { code: "1103", name: "Cuentas por cobrar clientes" },
-  { code: "1104", name: "Documentos por cobrar" },
-  { code: "1105", name: "Anticipos a proveedores" },
-  { code: "1106", name: "Inventario de materia prima" },
-  { code: "1107", name: "Inventario de materiales indirectos" },
-  { code: "1108", name: "Inventario de productos en proceso" },
-  { code: "1109", name: "Inventario de productos terminados" },
-  { code: "1110", name: "Pagos anticipados" },
+const REASONS = [
+  "La empresa produce por lotes identificables según línea, color y orden de fabricación",
+  "Cada orden acumula materiales directos, mano de obra directa y CIF aplicados",
+  "La gerencia necesita el costo de cada lote para fijar precios y medir rentabilidad",
+  "La hoja de costos evidencia el costo unitario y total de la orden",
 ];
 
-const ACTIVO_NO_CORRIENTE = [
-  { code: "1201", name: "Terrenos" },
-  { code: "1202", name: "Edificios" },
-  { code: "1203", name: "Maquinaria y equipo" },
-  { code: "1204", name: "Equipo de oficina" },
-  { code: "1205", name: "Equipo de reparto" },
-  { code: "1206", name: "Dep. acum. edificios" },
-  { code: "1207", name: "Dep. acum. maquinaria y equipo" },
-  { code: "1208", name: "Dep. acum. equipo de oficina" },
-  { code: "1209", name: "Dep. acum. equipo de reparto" },
-];
-
-export default function Slide08CatalogoActivo() {
+export default function Slide08SistemaCostos() {
   return (
     <div className="slide-content">
-      <span className="section-number">05</span>
-      <div className="slide-label">Sección 5 — Catálogo de Cuentas</div>
-      <h2 className="slide-title small">Catálogo de Cuentas: Activo</h2>
+      <div className="paint-bar" style={{ background: "var(--gradient-cool)" }} />
+      <span className="section-number">04</span>
 
-      <p style={{ fontSize: 13, color: "var(--text-tertiary)", marginBottom: "var(--space-4)" }}>
-        Codificación: 1 = Activo · Primeros dos dígitos = subgrupo · Últimos dos = cuenta específica
-      </p>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-violet)" } as React.CSSProperties}>Sección 4</div>
+      <h2 className="slide-title medium">Sistema de Costos por<br /><span className="accent">Órdenes de Producción</span></h2>
 
-      <div className="grid-2" style={{ flex: 1, overflow: "hidden" }}>
-        {/* Activo Corriente */}
-        <div>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700, color: "var(--color-presenter-1)", marginBottom: "var(--space-3)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-presenter-1)" }} />
-            Activo Corriente
+      <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 40 }}>
+        {/* Left visual */}
+        <div style={{
+          flex: "0 0 380px", height: "100%",
+          background: "var(--gradient-brand)", borderRadius: 18,
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          padding: "40px 32px", color: "white",
+        }}>
+          <div style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 600, opacity: 0.8, marginBottom: 8 }}>
+            Sistema seleccionado
           </div>
-          <div className="table-scroll">
-            <table className="data-table compact">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Cuenta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ACTIVO_CORRIENTE.map((c) => (
-                  <tr key={c.code}>
-                    <td className="code-cell">{c.code}</td>
-                    <td>{c.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div style={{ fontFamily: "var(--font-heading)", fontSize: 28, fontWeight: 800, marginBottom: 16, lineHeight: 1.2 }}>
+            Costos por Órdenes de Producción
+          </div>
+          <div style={{ fontSize: 14, lineHeight: 1.6, opacity: 0.85 }}>
+            Con apoyo de control permanente de inventarios para materia prima,
+            producción en proceso y productos terminados.
           </div>
         </div>
 
-        {/* Activo No Corriente */}
-        <div>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700, color: "var(--color-presenter-3)", marginBottom: "var(--space-3)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-presenter-3)" }} />
-            Activo No Corriente
-          </div>
-          <div className="table-scroll">
-            <table className="data-table compact">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Cuenta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ACTIVO_NO_CORRIENTE.map((c) => (
-                  <tr key={c.code}>
-                    <td className="code-cell">{c.code}</td>
-                    <td>{c.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* Right — justification */}
+        <div style={{ flex: 1 }}>
+          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 18, fontWeight: 700, marginBottom: 20 }}>
+            ¿Por qué este sistema?
+          </h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {REASONS.map((r, i) => (
+              <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                <div style={{
+                  width: 28, height: 28, borderRadius: "50%",
+                  background: "var(--color-blue-soft)",
+                  display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                }}>
+                  <CheckCircle size={16} style={{ color: "var(--color-blue)" }} />
+                </div>
+                <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--text-secondary)", paddingTop: 3 }}>{r}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

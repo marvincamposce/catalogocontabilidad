@@ -1,61 +1,66 @@
 import React from "react";
-import { BookMarked, Shield, BarChart3, AlertTriangle } from "lucide-react";
+import { Building2, MapPin, Factory, ShoppingCart } from "lucide-react";
 
-export default function Slide05Importancia() {
+const DATA = [
+  { label: "Empresa", value: "Pinturas Industriales del Valle, S.A." },
+  { label: "Fundación", value: "12 de marzo de 2015" },
+  { label: "Rubro", value: "Industria manufacturera" },
+  { label: "Actividad", value: "Fabricación y venta de pinturas y recubrimientos" },
+  { label: "Ubicación", value: "San Pedro Sula, Honduras" },
+  { label: "Producción", value: "Por lotes y órdenes de fabricación" },
+  { label: "Sistema", value: "Costos por órdenes de producción" },
+];
+
+export default function Slide05Empresa() {
   return (
     <div className="slide-content">
-      <span className="section-number">03</span>
-      <div className="slide-label">Sección 3</div>
-      <h2 className="slide-title">Importancia del Catálogo y Manual de Cuentas</h2>
+      <div className="paint-bar blue" />
+      <span className="section-number">02</span>
 
-      <div className="grid-3" style={{ marginBottom: "var(--space-5)" }}>
-        <div className="glass-card" style={{ borderTop: "2px solid var(--color-presenter-1)" }}>
-          <div style={{ marginBottom: "var(--space-3)" }}>
-            <BookMarked size={24} style={{ color: "var(--color-presenter-1)" }} />
+      <div className="slide-label">Sección 2</div>
+      <h2 className="slide-title medium">La <span className="accent">Empresa</span></h2>
+
+      <div style={{ flex: 1, display: "flex", gap: 32, alignItems: "stretch" }}>
+        {/* Company Card */}
+        <div className="card flat no-hover" style={{ flex: "0 0 480px", padding: 28, display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+            <div className="icon-box md" style={{ background: "var(--color-blue-soft)" }}>
+              <Building2 size={20} style={{ color: "var(--color-blue)" }} />
+            </div>
+            <span style={{ fontFamily: "var(--font-heading)", fontSize: 17, fontWeight: 700 }}>
+              Ficha Técnica
+            </span>
           </div>
-          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: "var(--space-2)" }}>
-            Catálogo de Cuentas
-          </h3>
-          <p style={{ fontSize: 13, lineHeight: 1.7, color: "var(--text-secondary)" }}>
-            Estructura ordenada y codificada de todas las cuentas. Facilita la
-            clasificación uniforme, mejora el control interno y agiliza la
-            preparación de los estados financieros.
-          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+            {DATA.map((d) => (
+              <div key={d.label} style={{ display: "flex", gap: 10, fontSize: 13.5 }}>
+                <span style={{ color: "var(--text-tertiary)", minWidth: 85, fontWeight: 600 }}>{d.label}</span>
+                <span style={{ color: "var(--text-secondary)" }}>{d.value}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="glass-card" style={{ borderTop: "2px solid var(--color-presenter-2)" }}>
-          <div style={{ marginBottom: "var(--space-3)" }}>
-            <Shield size={24} style={{ color: "var(--color-presenter-2)" }} />
-          </div>
-          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: "var(--space-2)" }}>
-            Manual de Cuentas
-          </h3>
-          <p style={{ fontSize: 13, lineHeight: 1.7, color: "var(--text-secondary)" }}>
-            Complementa al catálogo explicando el contenido, función y
-            movimiento de cada cuenta. Asegura criterio uniforme y reduce
-            errores en el registro contable.
-          </p>
+        {/* Right info cards */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
+          {[
+            { icon: Factory, color: "#7C3AED", bg: "#F3EEFF", title: "Productos", desc: "Pinturas arquitectónicas e industriales, selladores, imprimantes y recubrimientos especiales" },
+            { icon: ShoppingCart, color: "#059669", bg: "#ECFDF5", title: "Clientes", desc: "Ferreterías, constructoras, distribuidores y clientes institucionales a nivel nacional" },
+            { icon: MapPin, color: "#F97316", bg: "#FFF4EB", title: "¿Por qué esta empresa?", desc: "El giro permite aplicar claramente la materia prima, mano de obra directa, CIF e inventarios de producción en proceso" },
+          ].map((item) => (
+            <div key={item.title} className="feature-item" style={{ flex: 1 }}>
+              <div className="icon-box lg" style={{ background: item.bg, borderRadius: 14 }}>
+                <item.icon size={22} style={{ color: item.color }} />
+              </div>
+              <div>
+                <div style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>
+                  {item.title}
+                </div>
+                <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--text-secondary)" }}>{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-
-        <div className="glass-card" style={{ borderTop: "2px solid var(--color-presenter-3)" }}>
-          <div style={{ marginBottom: "var(--space-3)" }}>
-            <BarChart3 size={24} style={{ color: "var(--color-presenter-3)" }} />
-          </div>
-          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: "var(--space-2)" }}>
-            En la Industria
-          </h3>
-          <p style={{ fontSize: 13, lineHeight: 1.7, color: "var(--text-secondary)" }}>
-            Además de ventas y pagos, se registran movimientos de materia
-            prima, producción en proceso, costos indirectos, producción
-            terminada y costo de productos vendidos.
-          </p>
-        </div>
-      </div>
-
-      <div className="key-idea">
-        <strong>Idea clave:</strong> En una empresa industrial, el catálogo y el manual de cuentas
-        no son documentos aislados. Ambos deben estar alineados con el sistema de costos y con los
-        informes de producción.
       </div>
     </div>
   );

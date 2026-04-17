@@ -1,77 +1,42 @@
 import React from "react";
-import { CheckCircle2, Lightbulb, GraduationCap } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
-const CONCLUSIONES = [
+const ITEMS = [
   "Una empresa industrial necesita un catálogo de cuentas específico por la complejidad de inventarios y costos de producción.",
-  "El manual de cuentas asegura uniformidad, mejora el control interno y facilita la preparación de los estados financieros.",
-  "El sistema de costos por órdenes de producción permite identificar y acumular el costo de cada orden.",
+  "El manual de cuentas asegura uniformidad en el registro contable, mejora el control interno y facilita la preparación de los estados financieros.",
+  "El sistema de costos por órdenes de producción permite identificar y acumular el costo de cada orden de forma individual.",
   "Los informes de producción son el puente entre la contabilidad de costos y la información financiera.",
 ];
 
-const RECOMENDACIONES = [
-  "Mantener actualizado el catálogo al incorporar nuevas líneas o áreas de costo.",
-  "Implementar controles documentales para requisiciones, órdenes y nóminas.",
-  "Comparar periódicamente costos reales vs. presupuestados.",
-  "Capacitar al personal contable y de planta en el flujo de información.",
-];
-
-export default function Slide19Conclusiones() {
+export default function Slide25Conclusiones() {
   return (
     <div className="slide-content">
-      <span className="section-number">FIN</span>
-      <div className="slide-label">Secciones 10, 11 y Cierre</div>
-      <h2 className="slide-title">Conclusiones y Recomendaciones</h2>
+      <div className="paint-bar warm" />
+      <span className="section-number">10</span>
 
-      <div className="grid-2" style={{ flex: 1 }}>
-        {/* Conclusiones */}
-        <div className="glass-card" style={{ borderTop: "2px solid var(--color-presenter-1)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-4)" }}>
-            <CheckCircle2 size={18} style={{ color: "var(--color-presenter-1)" }} />
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 700, color: "var(--text-primary)" }}>
-              Conclusiones
-            </span>
-          </div>
-          <ul className="slide-list" style={{ fontSize: 13 }}>
-            {CONCLUSIONES.map((c, i) => (
-              <li key={i}>{c}</li>
-            ))}
-          </ul>
-        </div>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-rose)" } as React.CSSProperties}>Sección 10</div>
+      <h2 className="slide-title"><span className="accent">Conclusiones</span></h2>
 
-        {/* Recomendaciones */}
-        <div className="glass-card" style={{ borderTop: "2px solid var(--color-presenter-4)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", marginBottom: "var(--space-4)" }}>
-            <Lightbulb size={18} style={{ color: "var(--color-presenter-4)" }} />
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 700, color: "var(--text-primary)" }}>
-              Recomendaciones
-            </span>
-          </div>
-          <ul className="slide-list" style={{ fontSize: 13 }}>
-            {RECOMENDACIONES.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
+      <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 18, maxWidth: 960 }}>
+          {ITEMS.map((item, i) => (
+            <div key={i} style={{
+              display: "flex", gap: 16, alignItems: "flex-start",
+              padding: "18px 22px", borderRadius: 14,
+              background: "white", border: "1px solid var(--border-light)",
+              boxShadow: "var(--shadow-sm)",
+            }}>
+              <div style={{
+                width: 32, height: 32, borderRadius: "50%",
+                background: "var(--gradient-brand)",
+                display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+              }}>
+                <CheckCircle2 size={18} color="white" />
+              </div>
+              <p style={{ fontSize: 15, lineHeight: 1.65, color: "var(--text-secondary)", paddingTop: 4 }}>{item}</p>
+            </div>
+          ))}
         </div>
-      </div>
-
-      {/* Closing */}
-      <div style={{
-        textAlign: "center",
-        marginTop: "var(--space-5)",
-        padding: "var(--space-4)",
-        background: "var(--bg-glass)",
-        borderRadius: "var(--border-radius-md)",
-        border: "1px solid var(--border-subtle)",
-      }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "var(--space-3)", marginBottom: "var(--space-2)" }}>
-          <GraduationCap size={24} style={{ color: "var(--color-presenter-2)" }} />
-          <span style={{ fontFamily: "var(--font-heading)", fontSize: 20, fontWeight: 800, background: "var(--gradient-accent-2)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-            ¡Gracias por su atención!
-          </span>
-        </div>
-        <p style={{ fontSize: 13, color: "var(--text-tertiary)" }}>
-          Universidad José Cecilio del Valle — Contabilidad de Costos — Abril 2025
-        </p>
       </div>
     </div>
   );

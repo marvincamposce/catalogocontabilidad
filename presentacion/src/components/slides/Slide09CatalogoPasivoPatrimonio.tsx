@@ -1,99 +1,37 @@
 import React from "react";
+import { Layers, Hammer, Zap, Calculator } from "lucide-react";
 
-const PASIVO = [
-  { code: "2101", name: "Cuentas por pagar proveedores" },
-  { code: "2102", name: "Documentos por pagar" },
-  { code: "2103", name: "Sueldos y salarios por pagar" },
-  { code: "2104", name: "Impuestos por pagar" },
-  { code: "2105", name: "Dividendos por pagar" },
-  { code: "2201", name: "Préstamos bancarios a largo plazo" },
-  { code: "2202", name: "Bonos por pagar" },
-  { code: "2203", name: "Prestaciones laborales por pagar" },
+const ELEMENTS = [
+  { icon: Layers, color: "#2E5BFF", bg: "#EEF2FF", title: "Materia Prima Directa", desc: "Material principal incorporado al producto terminado: resinas, pigmentos y aditivos base." },
+  { icon: Hammer, color: "#7C3AED", bg: "#F3EEFF", title: "Mano de Obra Directa", desc: "Trabajo del personal que interviene directamente en la fabricación del lote." },
+  { icon: Zap, color: "#D97706", bg: "#FFFBEB", title: "Costos Indirectos (CIF)", desc: "Energía, depreciación de planta, supervisión, mantenimiento y materiales indirectos." },
+  { icon: Calculator, color: "#059669", bg: "#ECFDF5", title: "Costo Total de la Orden", desc: "Suma de MPD + MOD + CIF aplicados a cada orden de producción específica." },
 ];
 
-const PATRIMONIO = [
-  { code: "3101", name: "Capital social" },
-  { code: "3102", name: "Reserva legal" },
-  { code: "3103", name: "Utilidades retenidas" },
-  { code: "3104", name: "Utilidad del período" },
-];
-
-export default function Slide09CatalogoPasivoPatrimonio() {
+export default function Slide09Elementos() {
   return (
     <div className="slide-content">
-      <span className="section-number">05</span>
-      <div className="slide-label">Sección 5 — Catálogo de Cuentas</div>
-      <h2 className="slide-title small">Catálogo: Pasivo y Patrimonio</h2>
+      <div className="paint-bar" style={{ background: "var(--gradient-cool)" }} />
+      <span className="section-number">04</span>
 
-      <div className="grid-2" style={{ flex: 1, overflow: "hidden" }}>
-        {/* Pasivo */}
-        <div>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700, color: "var(--color-presenter-4)", marginBottom: "var(--space-3)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-presenter-4)" }} />
-            Pasivo
-          </div>
-          <div className="table-scroll">
-            <table className="data-table compact">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Cuenta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PASIVO.map((c) => (
-                  <tr key={c.code}>
-                    <td className="code-cell">{c.code}</td>
-                    <td>{c.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      <div className="slide-label" style={{ "--color-blue": "var(--color-violet)" } as React.CSSProperties}>Sección 4</div>
+      <h2 className="slide-title medium">Elementos del <span className="accent">Costo</span></h2>
 
-          <div style={{ marginTop: "var(--space-3)" }}>
-            <div className="tag-row">
-              <span className="tag" style={{ color: "var(--color-presenter-4)", borderColor: "rgba(245,158,11,0.3)", background: "rgba(245,158,11,0.08)" }}>
-                Corto plazo: 21xx
-              </span>
-              <span className="tag" style={{ color: "var(--color-presenter-3)", borderColor: "rgba(139,92,246,0.3)", background: "rgba(139,92,246,0.08)" }}>
-                Largo plazo: 22xx
-              </span>
+      <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+        <div className="grid-2" style={{ width: "100%", gap: 20 }}>
+          {ELEMENTS.map((el) => (
+            <div key={el.title} className="card no-hover" style={{ padding: 24, display: "flex", gap: 18, alignItems: "flex-start" }}>
+              <div className="icon-box xl" style={{ background: el.bg }}>
+                <el.icon size={26} style={{ color: el.color }} />
+              </div>
+              <div>
+                <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 17, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>
+                  {el.title}
+                </h3>
+                <p style={{ fontSize: 14, lineHeight: 1.65, color: "var(--text-secondary)" }}>{el.desc}</p>
+              </div>
             </div>
-          </div>
-        </div>
-
-        {/* Patrimonio */}
-        <div>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700, color: "var(--color-presenter-5)", marginBottom: "var(--space-3)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-presenter-5)" }} />
-            Patrimonio
-          </div>
-          <div className="table-scroll">
-            <table className="data-table compact">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Cuenta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PATRIMONIO.map((c) => (
-                  <tr key={c.code}>
-                    <td className="code-cell">{c.code}</td>
-                    <td>{c.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="glass-card compact" style={{ marginTop: "var(--space-4)" }}>
-            <p style={{ fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.6 }}>
-              <strong style={{ color: "var(--text-primary)" }}>Grupo 3</strong> — Agrupa las aportaciones de los socios,
-              las reservas legales y los resultados acumulados y del período actual.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>
